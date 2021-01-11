@@ -36,6 +36,21 @@ https://endjin.com/blog/2019/09/passwordless-ssh-from-windows-10-to-raspberry-pi
 Make sure that you are in the correct directory first before you run the file. The file would be a python file and is meant to test out all the raspberry pi at once and make sure they are connected. 
 
 __Windows__
+
+The windows command is as follows
 ```
 py SSH.py 
 ```
+You will be given a few prompts to add the nodes to the testscript
+```
+Please input nodes here
+Input number of nodes: 
+Input node name: 
+```
+This will be the other prompts given after all the nodes have been added
+```
+Get hostname? (Y/N) 
+Run Iperf (Y/N) 
+run speedtest (Y/N) 
+```
+
