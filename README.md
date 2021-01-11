@@ -27,5 +27,6 @@ sudo apt install speedtest-cli
 **Passwordless SSH** 
 You can follow the steps to make your raspberry pi passwordless from the link below: 
 https://endjin.com/blog/2019/09/passwordless-ssh-from-windows-10-to-raspberry-pi
+
 ---------------------------------------------------------------------------------------------------------
 
