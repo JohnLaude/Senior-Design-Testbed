@@ -54,3 +54,16 @@ Run Iperf (Y/N)
 run speedtest (Y/N) 
 ```
 
+---------------------------------------------------------------------------------------------------------
+**Testbed GUI**
+
+This will be the command that you need to run to use the testbed: 
+
+__ Windows__
+
+This is the command on windows
+```
+py Testbed_GUI.py
+```
+
+To run the initial test to create test the network press "New Device" followed by "Run Test"
