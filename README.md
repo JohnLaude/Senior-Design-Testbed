@@ -14,5 +14,12 @@ Install RaspAP from your device’s shell prompt using the command below:
 ```
 curl -sL https://install.raspap.com | bash
 ```
+For more information, pleas head to this website to learn more about RaspAP
 https://raspap.com/
 
+--------------------------------------------------------------------------------------------------------- 
+**Speedtest Download**
+```
+sudo apt install speedtest-cli
+```
+---------------------------------------------------------------------------------------------------------
