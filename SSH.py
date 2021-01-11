@@ -33,12 +33,10 @@ def speedtest():
             subprocess.call(args, shell=True)
 
 # Main code and testscript.
-print("Please input hostnames?")
+print("Please input nodes here")
 num = int(input("Input number of nodes: "), base=10)
-print(num)
 while num > 0:
     Nodes.append(input("Input node name: "))
-    print(num)
     num -= 1
 flag[0] = input("Get hostname? (Y/N) ")
 flag[1] = input("Get IP? (Y/N) ")
