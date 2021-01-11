@@ -35,7 +35,7 @@ https://endjin.com/blog/2019/09/passwordless-ssh-from-windows-10-to-raspberry-pi
 
 Make sure that you are in the correct directory first before you run the file. The file would be a python file and is meant to test out all the raspberry pi at once and make sure they are connected. 
 
-* *Windows* *
+__Windows__
 ```
 py SSH.py 
 ```
