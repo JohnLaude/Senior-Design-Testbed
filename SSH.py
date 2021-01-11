@@ -2,12 +2,12 @@
 import subprocess
 ##Parameter List##
 # list of Nodes
-Nodes = ["Node1", "Node2"]
+Nodes = []
 # Iperf values: default value interval 1 second, runtime 10 seconds
 iperf_prm  = [1, 10]
 # 5 Flags all set to 0
 flag = [0]*5
-
+input_flag = 1
 #Get hostname
 def getName():
     for n in Nodes:
@@ -33,6 +33,13 @@ def speedtest():
             subprocess.call(args, shell=True)
 
 # Main code and testscript.
+print("Please input hostnames?")
+num = int(input("Input number of nodes: "), base=10)
+print(num)
+while num > 0:
+    Nodes.append(input("Input node name: "))
+    print(num)
+    num -= 1
 flag[0] = input("Get hostname? (Y/N) ")
 flag[1] = input("Get IP? (Y/N) ")
 flag[2] = input("Run Iperf (Y/N) ")
