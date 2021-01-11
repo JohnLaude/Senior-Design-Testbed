@@ -59,7 +59,7 @@ run speedtest (Y/N)
 
 This will be the command that you need to run to use the testbed: 
 
-__ Windows__
+__Windows__
 
 This is the command on windows
 ```
