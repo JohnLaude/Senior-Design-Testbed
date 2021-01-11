@@ -14,12 +14,18 @@ Install RaspAP from your device’s shell prompt using the command below:
 ```
 curl -sL https://install.raspap.com | bash
 ```
-For more information, pleas head to this website to learn more about RaspAP
+For more information, pleas head to this website to learn more about RaspAP:
 https://raspap.com/
 
 --------------------------------------------------------------------------------------------------------- 
 **Speedtest Download**
+You can download the speedtest client using the command below
 ```
 sudo apt install speedtest-cli
 ```
 ---------------------------------------------------------------------------------------------------------
+**Passwordless SSH** 
+You can follow the steps to make your raspberry pi passwordless from the link below: 
+https://endjin.com/blog/2019/09/passwordless-ssh-from-windows-10-to-raspberry-pi
+---------------------------------------------------------------------------------------------------------
+
