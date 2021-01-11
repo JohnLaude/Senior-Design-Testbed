@@ -6,5 +6,13 @@ Hello, if you are reading this then you are downloading Senior Design Testbed ma
 This testbed code is under the assumption of a few different things: 
   - RaspAP has been downloaded on nodes that we will act as Relays and Access Points
   - Passwordless authorization for raspberry pis for testbed controller device
-  - speedtest client has been downloaded
-  
+  - Speedtest client 
+--------------------------------------------------------------------------------------------------------- 
+**RaspAP Download:** 
+
+Install RaspAP from your device’s shell prompt using the command below:
+```
+curl -sL https://install.raspap.com | bash
+```
+https://raspap.com/
+
