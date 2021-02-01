@@ -16,7 +16,7 @@ After downloading and imaging the rasoian OS file into your micro-SD card, you c
 and save an SSH file into it. Make sure there is nothing on the file extension when this is saved. To 
 check the file extension, go to view and check the fil extension checkbox. 
 
-You can find the raspberrypi by inputing this into the command line. 
+You can find the raspberrypi IP by inputing this into the command line. 
 ```
 ping raspberrypi.local
 ```
