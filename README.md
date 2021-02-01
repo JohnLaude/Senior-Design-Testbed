@@ -15,6 +15,8 @@ This testbed code is under the assumption of a few different things:
 After downloading and imaging the rasoian OS file into your micro-SD card, you can go into the boot file 
 and save an SSH file into it. Make sure there is nothing on the file extension when this is saved. To 
 check the file extension, go to view and check the fil extension checkbox. 
+
+You can find the raspberrypi by inputing this into the command line. 
 ```
 ping raspberrypi.local
 ```
