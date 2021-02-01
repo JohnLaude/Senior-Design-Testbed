@@ -4,9 +4,23 @@ Repository for Senior Design Project for Fall 2020
 Hello, if you are reading this then you are downloading Senior Design Testbed made by UMass Boston student to help people with VLC and OWC research. 
 
 This testbed code is under the assumption of a few different things: 
+  - SSH is enabled in the raspberry pi
   - RaspAP has been downloaded on nodes that we will act as Relays and Access Points
   - Passwordless authorization for raspberry pis for testbed controller device
   - Speedtest client 
+  
+--------------------------------------------------------------------------------------------------------- 
+**Headless SSH:** 
+
+After downloading and imaging the rasoian OS file into your micro-SD card, you can go into the boot file 
+and save an SSH file into it. Make sure there is nothing on the file extension when this is saved. To 
+check the file extension, go to view and check the fil extension checkbox. 
+```
+ping raspberrypi.local
+```
+For more information, pleas head to the raspberry pi website to learn more:
+https://www.raspberrypi.org/documentation/configuration/wireless/headless.md
+
 --------------------------------------------------------------------------------------------------------- 
 **RaspAP Download:** 
 
