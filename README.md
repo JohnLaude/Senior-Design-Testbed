@@ -47,35 +47,43 @@ You can follow the steps to make your raspberry pi passwordless from the link be
 https://endjin.com/blog/2019/09/passwordless-ssh-from-windows-10-to-raspberry-pi
 
 ---------------------------------------------------------------------------------------------------------
-**Using Test_All.py**
+**Using pwr_swp1.py**
 
 Make sure that you are in the correct directory first before you run the file. The file would be a python file and is meant to test out all the raspberry pi at once and make sure they are connected. 
 
 __Windows__
 The windows command is as follows
 ```
-py Test_All.py 
+py pwr_swp1.py 
 ```
 __Linux__
 The linux command is as follows
 ```
-python Test_All.py
+python pwr_swp1.py
 ```
 
-You will be given a few prompts to add the nodes to the testscript
+Open file a change list of parameters
 ```
-Please input nodes here
-Input number of nodes: 
-Input node name: 
+# Parameters
+Nodes = ["10.1.1.2"]
+flag = [0]*5
+iperf_prm  = [10, 10]
+Static_IP = []
+Wifi_IP = []
+Wifi_IP.append("10.1.101.1")
+results = []
+results2 = []
+filename = "data1.csv"
+trials = 20
+power_sweep = 31
+min_power = 31
+interval = 2
 ```
-This will be the other prompts given after all the nodes have been added
+You will then need to go to line 74 to change which iperf test you want to do. You change this to iperf_r or iperf_d accordingly
 ```
-Ping devices? (Y/N)
-Get hostname? (Y/N) 
-Get IP? (Y/N)
-Get routing? (Y/N)
-run speedtest (Y/N) 
+        iperf(iperf_prm[0], iperf_prm[1], a)
 ```
+This will save into a csv file automatically. Waning: Please do not leave csv file open or it will not be able to 
 
 ---------------------------------------------------------------------------------------------------------
 **Testbed GUI**
@@ -86,7 +94,7 @@ __Windows__
 
 This is the command on windows
 ```
-py Testbed_GUI.py
+py GUI.py
 ```
 
-To run the initial test to create test the network press "New Device" followed by "Run Test"
+To run the initial test to create test the network press "Add New Device" to add new device into the control network. A new window will pop up that will prompt for IP addess and nodetype. You can navigate through the tabs to see how the testbed system looks like. 
