@@ -4,7 +4,10 @@
 # Description: This is the Testbed Controller class file in which everything is
 # going to be controled in. All the classes will be imported here.
 import subprocess
+from multiprocessing import Process, Pipe
 import os
+import itertools
+import csv
 from AccessPoint import AccessPoint
 from Station import Station
 from Relay import Relay
@@ -13,10 +16,12 @@ from xlwt import Workbook
 
 
 ################ Parameter List ################
-name = "Node1"
+name = "10.1.1.2"
+name1 = "10.1.1.3"
+name2 = "10.1.1.4"
 iperf_prm  = [1]
 num_node = 2
-xls_sheet = 'data.xls'
+filename = "data3.csv"
 
 ################ Parameter List ################
 
@@ -26,101 +31,81 @@ class TB_controller:
     def __init__(self):
         # List of nodes
         self.Node_List = []
+        self.route_list = []
         self.m = 0
         self.row = 1
-        # Creat xls file
+        self.data = []
 
-        self.wb = Workbook()
-
-        # add_sheet is used to create sheet.
-        self.sheet1 = self.wb.add_sheet('Sheet 1')
-        self.sheet1.write(0, 0, 'Data Sheet')
-        self.sheet1.write(0, 1, 'NAME')
-        self.sheet1.write(0, 2, 'IP')
-        self.sheet1.write(0, 3, 'ROUTING')
-        self.sheet1.write(0, 4, 'PING')
-        self.sheet1.write(0, 5, 'DOWNLOAD')
-        self.sheet1.write(0, 6, 'UPLOAD')
-        self.sheet1.write(0, 7, 'DATE')
-        self.sheet1.write(0, 8, 'TIME STAMP')
-        try:
-            self.wb.save(xls_sheet)
-        except:
-            pass
-
-    def add(self, name, num):
+    def add(self, name, num, routing):
         #name = input("Please input a Node ")
         #num = int(input("What tye of node? \n1.Station \n2.AccessPoint \n3.Relay \n"))
-        if num == 1:
+        if num == 'Station':
             c = Station(name)
-        if num == 2:
+        if num == 'Access Point':
             c = AccessPoint(name)
-        if num == 3:
+        if num == 'Relay':
             c = Relay(name)
+
         self.Node_List.append(c)
+        c.set_routing(routing)
+        self.route_list.append(c.routing)
+        c.get_IP()
+        output_val = [c.Name,c.Control_IP,c.Test_IP,c.nodetype,c.routing]
+        return output_val
 
     def check_node(self):
         # Kind of like SSH.py but using
         pass
     def run_test(self):
         for n in self.Node_List:
-            n.update()
-
+            if n.nodetype == "Access Point":
+                n.update_AP()
+            else:
+                n.update()
     def test_config(self):
         pass
 
-    def store(self):
-        #Store data vlues from test
-        n = self.Node_List[self.m]
-        list = []
-        list.append(n.Name)
-        list.append(n.IP)
-        list.append(n.routing)
-        list.append(str(n.Ping))
-        list.append(str(n.Download))
-        list.append(str(n.Upload))
-        list.append(str(n.Date))
-        list.append(str(n.Time))
-        self.m += 1
-        return list
+    def save_data(self,data_out):
+        with open(filename, 'w', newline = '') as csvfile:
+        # creating a csv writer object
+            csvwriter = csv.writer(csvfile)
+        # writing the data rows
+            csvwriter.writerows(data_out)
 
-    def passing(self):
-        # Write to an excel sheet
-        for n in self.Node_List:
-            self.sheet1.write(self.row, 1,n.Name)
-            self.sheet1.write(self.row, 2,n.IP)
-            self.sheet1.write(self.row, 3,n.routing)
-            self.sheet1.write(self.row, 4,str(n.Ping))
-            self.sheet1.write(self.row, 5,str(n.Download))
-            self.sheet1.write(self.row, 6,str(n.Upload))
-            self.sheet1.write(self.row, 7,str(n.Date))
-            self.sheet1.write(self.row, 8,str(n.Time))
-            self.row += 1
-        self.wb.save('data.xls')
     def reset(self):
         pass
 
     def delete(self):
         pass
 
-    def update(self):
-        pass
+    def iperf_test(self,trials):
+        for n in self.Node_List:
+            if n.nodetype == "Access Point":
+                n.iperf_start("12000")
+            if n.nodetype == "Station":
+                for i in range(trials):
+                    print("Trial number "+ str(i))
+                    self.data.append(n.iperf("12000"))
 
     def print(self):
         for n in self.Node_List:
             print("/////////////////////////////////")
             print(n.Name + " Hostname: ")
             print(n.Name)
-            print(n.Name + " IP address: ")
-            print(n.IP)
-            print("Ping: ")
-            print(str(n.Ping) + " ms")
-            print("Download: ")
-            print(str(n.Download)+ " Mbit/s")
-            print("Upload: ")
-            print(str(n.Upload) + " Mbit/s")
+            print("Test IP address: ")
+            print(n.Test_IP)
             print("Date: ")
             print(str(n.Date))
             print("Time: ")
             print(str(n.Time))
             print("/////////////////////////////////")
+
+
+# Main Test
+#g = TB_controller()
+#g.add('10.1.1.3', 'Access Point','10.1.101.0')
+#g.add('10.1.1.4', 'Station','10.1.101.1')
+#g.run_test()
+#g.iperf_test(10)
+#g.save_data(g.data)
+#g.print()
