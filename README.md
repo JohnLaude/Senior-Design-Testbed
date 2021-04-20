@@ -24,14 +24,10 @@ For more information, pleas head to the raspberry pi website to learn more:
 https://www.raspberrypi.org/documentation/configuration/wireless/headless.md
 
 --------------------------------------------------------------------------------------------------------- 
-**RaspAP Download:** 
+**Access Point:** 
 
-Install RaspAP from your device’s shell prompt using the command below:
-```
-curl -sL https://install.raspap.com | bash
-```
-For more information, pleas head to this website to learn more about RaspAP:
-https://raspap.com/
+You can configure an Access Point by following this link: 
+https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md 
 
 --------------------------------------------------------------------------------------------------------- 
 **Speedtest Download**
